@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  dia: 2013-04-10
+  hora: 2013-04-10 08:31:52
+  aula: MyString
+  materia_id: 1
+  curso_id: 1
+  instructor: 
+
+two:
+  dia: 2013-04-10
+  hora: 2013-04-10 08:31:52
+  aula: MyString
+  materia_id: 1
+  curso_id: 1
+  instructor: 

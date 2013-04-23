@@ -1,0 +1,83 @@
+<link rel="stylesheet" type="text/css" href="assets/bootstrap.css">
+<div class="navbar">
+  <div class="navbar navbar-inverse">
+    <div class="navbar navbar-inner">
+      <div class="navbar navbar-fixed-top">
+        <div class="navbar navbar-static-top">
+          <h1 id="ins">Estudiantes del Curso: <%= @curso.nombre %>(<%= @curso.ficha %>)</h1>
+            <div class="btn-toolbar">
+              <div class="btn-group">
+                <a id="ic" class="btn" href="horarios"><i class="icon-align-justify"></i></a>
+              </div>
+            </div> 
+        </div>
+      </div> 
+     </div>
+  </div>
+</div>
+<body background="assets/fondo.jpg">
+<%- model_class = Estudiante -%>
+<div id="bus" class="page-header">
+  <%= form_tag request.path, :method => 'get' do %> 
+   <%= content_tag :label do %> 
+     <a id="nom">Nombre Aprendiz:</a> 
+     <%= text_field_tag :search, params[:search] %> 
+     <%= submit_tag "Consultar", :name => nil, :class => "btn btn-primary btn-small " %> 
+   <% end %> 
+  <% end %>
+</div>
+<table id="ta" class="table table-striped table-bordered table-condensed pretty">
+  <thead>
+    <tr>
+      <th><%= sortable "id" %></th>
+      <th><%= sortable "nombres" %></th>
+      <th><%= sortable "cedula" %></th>
+      <th><%= sortable "email" %>Email</th>
+      <th><%= sortable "direccion" %></th>
+      <th><%= sortable "fecha_nacimiento" %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+     <%= render @estudiantes %>
+  </tbody>
+</table>
+<div id="nu">
+<tr>
+    <td><%= link_to image_tag('nuevo.png', :width=>'45px', :title=>'Nuevo'), new_curso_estudiante_path, :class => 'btn btn-inverse' %>
+      <%= link_to 'Atras', cursos_path,  :class => 'btn btn-inverse' %>
+    </td>
+    </tr>
+    </div> 
+<br /> 
+<br /> 
+<div align="center"> 
+<%= will_paginate @estudiantes, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
+&raquo;' %> 
+</div> 
+<p id="to"> 
+ Total Aprendices : <%= @estudiantes.total_entries %> 
+</p>
+<div id="opag">
+ <%= form_tag request.path, :method => 'get' do %> 
+   <%= content_tag :label do %>
+    <font color="white">Seleccione numero de registros por pagina:</font>
+    <br>
+     <%= text_field_tag :limit, params[:limit], :id =>'num'%> 
+          <%= submit_tag "Aceptar", :name => nil %> 
+   <% end %> 
+ <% end %>
+</div>
+<div id="navbo" class="well">
+  </div>
+<div class="navbar navbar-fixed-bottom">
+   <div id="por">
+    <ul class="nav">
+      <li ><a id="le" href="http://www.twitter.com" ></a><img id='ing' src="assets/twitter.png"></li>
+      <li><a id="les" href="http://www.facebook.com"><img id='ing' src="assets/face.png"></a></li>
+      <li><a id="les" href="http://www.gmail.com"  onClick="window.open(this.href, this.target, 'width=550,height=415'); return false;"><img id= 'ing' src="assets/gmail.png"></a>
+      </li>
+    </ul>
+  </div>
+</div>
+</body>
